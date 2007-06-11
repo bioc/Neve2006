@@ -1,0 +1,127 @@
+
+%
+% NOTE -- ONLY EDIT THE .Rnw FILE!!!  The .tex file is
+% likely to be overwritten.
+%
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,pstricks}
+\usepackage[authoryear,round]{natbib}
+\usepackage{hyperref}
+
+
+\textwidth=6.2in
+\textheight=8.5in
+%\parskip=.3cm
+\oddsidemargin=.1in
+\evensidemargin=.1in
+\headheight=-.3in
+
+\newcommand{\scscst}{\scriptscriptstyle}
+\newcommand{\scst}{\scriptstyle}
+
+
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\textit{#1}}}
+\newcommand{\Rmethod}[1]{{\texttt{#1}}}
+\newcommand{\Rfunarg}[1]{{\texttt{#1}}}
+\newcommand{\Rclass}[1]{{\textit{#1}}}
+
+\textwidth=6.2in
+
+\bibliographystyle{plainnat} 
+ 
+\begin{document}
+%\setkeys{Gin}{width=0.55\textwidth}
+
+
+\title{Combining expression and CGH data on breast cancer
+cell lines: Neve2006}
+\author{VJ Carey, package maintainer, \texttt{<stvjc@channing.harvard.edu>}}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+The basic source information is obtainable by
+interrogating objects in the package.
+<<lkm>>=
+library(Neve2006)
+data(neveRMAmatch)
+neveRMAmatch
+experimentData(neveRMAmatch)
+data(neveCGHmatch)
+neveCGHmatch
+all.equal(sampleNames(neveRMAmatch), sampleNames(neveCGHmatch))
+@
+
+We can see that there are 50 arrays from the U133A platform
+and 50 CGH samples, and the sample names match.  The PMID for
+the primary manuscript is provided; additional information on
+URLs where the base data can be found should be added.
+
+\section{CGH feature data}
+
+Let's look at metadata provided on the first five clones in the
+CGH platform:
+<<lkc>>=
+featureData(neveCGHmatch)[1:5,]
+@
+The genomic location of clone sequence is tied completely
+to the build of the genome used to compute the location.
+This information is not provided in the data sources.
+We know from the paper that scanning and OncoBAC arrays
+were used, but no information about the details of annotation
+are immediately available.
+
+Figure 5 of the main paper associates clone RP11-265K5
+with a number of genes, including PROSC and BRF2.  Let's
+see where this clone lives:
+<<lkrp>>=
+pData(featureData(neveCGHmatch))[grep("RP11-265K5", 
+  featureNames(neveCGHmatch)),]
+@
+If we use Map Viewer at NCBI for Homo sapiens build 36.2,
+we find this clone located at about 37180K, in the vicinity
+of genes WHSC1L1, LETM2, FGFR1, PPADPC1B, DDHD2, BAG4, LSM1,
+STAR, ASH2L.  Some of these are noted in Figure 5.
+The cytoband is 8p12.
+
+\section{Gene expression data in relation to copy number}
+
+Let's identify probe sets annotated to 8p12.
+<<doid>>=
+library(hgu133a)
+library(annotate)
+cb = as.list(hgu133aMAP)
+G8p12ind = grep("8p12", unlist(cb))
+ps8p12 = names(unlist(cb)[G8p12ind])
+nevex = exprs(neveRMAmatch)[ps8p12,]
+syms = as.character(unlist(lookUp(rownames(nevex), "hgu133a", "SYMBOL")))
+@
+
+The logratios that measure copy number will be used 'raw'.
+<<getlr>>=
+nevlr = as.numeric(logRatios(neveCGHmatch)["RP11-265K5",])
+@
+<<dopl,fig=TRUE>>=
+par(mfrow=c(2,2))
+for (i in c(2,8,11,20))
+ plot( nevlr, nevex[i,], xlab="logratio", ylab="RMA expression",
+   main=syms[i])
+par(mfrow=c(1,1))
+@
+
+Also of interest is the expression distribution for SFRP1.
+
+Connection of these associations to phenotype is straightforward
+with proper use of phenoData components of the ExpressionSet
+and cghSet objects.  A unified representation of the
+two assays that includes
+support for linking clone and probe set is in development.
+
+\end{document}
+
+
