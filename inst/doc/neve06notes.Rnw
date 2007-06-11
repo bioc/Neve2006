@@ -1,3 +1,8 @@
+%\VignetteIndexEntry{Neve 2006: combined CGH and expression data}
+%\VignetteDepends{Biobase,hgu133a,annotate}
+%\VignetteKeywords{Expression Analysis, CGH}
+%\VignettePackage{Neve2006}
+
 
 %
 % NOTE -- ONLY EDIT THE .Rnw FILE!!!  The .tex file is

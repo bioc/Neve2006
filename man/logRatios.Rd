@@ -1,7 +1,7 @@
 \name{logRatios}
 \alias{logRatios}
 \alias{logRatios,cghSet-method}
-\S4class{cghSet}
+\alias{cghSet-class}
 
 \title{extractor for cghSet assay data}
 \description{extractor for cghSet assay data}
