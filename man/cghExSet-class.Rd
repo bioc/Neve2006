@@ -7,11 +7,25 @@
 \alias{initialize,cghExSet-method}
 \alias{logRatios,cghExSet-method}
 \alias{show,cghExSet-method}
+\alias{cloneMeta}
+\alias{cloneNames}
+\alias{make_cghExSet}
 
 \title{Class "cghExSet" for combining CGH and expression data }
 \description{	 combination of an ExpressionSet and CGH assay results }
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("cghExSet", phenoData, experimentData, annotation, exprs, logRatios, cloneMeta)}.
+}
+\usage{
+make_cghExSet(exprs, logRatios, cloneMeta, pd, mi, anno) # pd is AnnotatedDataFrame, mi is MIAME
+}
+\arguments{
+  \item{exprs}{ matrix of expression assay results }
+  \item{logRatios}{ matrix of aCGH assay results }
+  \item{cloneMeta}{AnnotatedDataFrame for aCGH clone descriptions}
+  \item{pd}{ AnnotatedDataFrame for sample level data }
+  \item{mi}{ \code{\link[Biobase]{MIAME}} instance for experiment documentation }
+  \item{anno}{character string with annotation platform descriptor for expression data}
 }
 \section{Slots}{
 	 \describe{
