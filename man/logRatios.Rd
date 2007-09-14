@@ -9,7 +9,7 @@
 logRatios(cghSet)
 }
 \arguments{
-  \item{cghSet}{ instance of \code{cghSet} class}
+  \item{cghSet}{ instance of \linkS4class{cghSet} class}
 }
 \details{
 gets the AssayData element

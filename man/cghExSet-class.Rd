@@ -46,9 +46,9 @@ and 'logRatios' }
   }
 }
 \section{Extends}{
-Class \code{"\linkS4class{eSet}"}, directly.
-Class \code{"\linkS4class{VersionedBiobase}"}, by class "eSet", distance 2.
-Class \code{"\linkS4class{Versioned}"}, by class "eSet", distance 3.
+Class \code{\link[Biobase]{eSet-class}}, directly.
+Class \code{\link[Biobase]{VersionedBiobase-class}}, by class "eSet", distance 2.
+Class \code{\link[Biobase]{Versioned-class}}, by class "eSet", distance 3.
 }
 \section{Methods}{
   \describe{

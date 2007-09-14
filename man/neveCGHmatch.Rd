@@ -21,7 +21,7 @@ tokens in the caArrayDB data as of June 9 2007.
 Those sample name tokens are very mangled in the CEL files.
 
 The combined data structure \code{neveExCGH}
-has a special container class \code{cghExSet}.
+has a special container class \code{\linkS4class{cghExSet}}.
 
 }
 \source{
