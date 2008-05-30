@@ -1,5 +1,5 @@
 %\VignetteIndexEntry{Neve 2006: combined CGH and expression data}
-%\VignetteDepends{Biobase,hgu133a,annotate}
+%\VignetteDepends{Biobase,hgu133a.db,annotate}
 %\VignetteKeywords{Expression Analysis, CGH}
 %\VignettePackage{Neve2006}
 
@@ -98,7 +98,7 @@ The cytoband is 8p12.
 
 Let's identify probe sets annotated to 8p12.
 <<doid>>=
-library(hgu133a)
+library(hgu133a.db)
 library(annotate)
 cb = as.list(hgu133aMAP)
 G8p12ind = grep("8p12", unlist(cb))
