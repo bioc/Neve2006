@@ -7,5 +7,5 @@ Depends: R (>= 2.5.0), tools, methods, utils, Biobase (>= 1.14.0), hgu133a.db, a
 Maintainer: VJ Carey <stvjc@channing.harvard.edu>
 License: The Artistic License, Version 2.0
 LazyLoad: yes
-biocViews: ExperimentData, Breast_Cancer
+biocViews: ExperimentData, Cancer, Breast
 Packaged: Sat Jun  9 11:12:31 2007; stvjc
