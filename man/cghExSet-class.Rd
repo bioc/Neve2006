@@ -14,7 +14,8 @@
 \title{Class "cghExSet" for combining CGH and expression data }
 \description{	 combination of an ExpressionSet and CGH assay results }
 \section{Objects from the Class}{
-Objects can be created by calls of the form \code{new("cghExSet", phenoData, experimentData, annotation, exprs, logRatios, cloneMeta)}.
+Objects can be created by calls of the form \code{new("cghExSet",
+  phenoData, experimentData, annotation, exprs, logRatios, cloneMeta)}. 
 }
 \usage{
 make_cghExSet(exprs, logRatios, cloneMeta, pd, mi, anno) # pd is AnnotatedDataFrame, mi is MIAME
@@ -24,8 +25,10 @@ make_cghExSet(exprs, logRatios, cloneMeta, pd, mi, anno) # pd is AnnotatedDataFr
   \item{logRatios}{ matrix of aCGH assay results }
   \item{cloneMeta}{AnnotatedDataFrame for aCGH clone descriptions}
   \item{pd}{ AnnotatedDataFrame for sample level data }
-  \item{mi}{ \code{\link[Biobase]{MIAME}} instance for experiment documentation }
-  \item{anno}{character string with annotation platform descriptor for expression data}
+  \item{mi}{ \code{\link[Biobase:class.MIAME]{MIAME}} instance for experiment
+    documentation } 
+  \item{anno}{character string with annotation platform descriptor for
+    expression data} 
 }
 \section{Slots}{
 	 \describe{
@@ -46,9 +49,12 @@ and 'logRatios' }
   }
 }
 \section{Extends}{
-Class \code{\link[Biobase]{eSet-class}}, directly.
-Class \code{\link[Biobase]{VersionedBiobase-class}}, by class "eSet", distance 2.
-Class \code{\link[Biobase]{Versioned-class}}, by class "eSet", distance 3.
+Class \code{\link[Biobase:class.eSet]{eSet-class}}, directly.
+Class
+\code{\link[Biobase:class.VersionedBiobase]{VersionedBiobase-class}}, by
+class "eSet", distance 2. 
+Class \code{\link[Biobase:class.Versioned]{Versioned-class}}, by class
+"eSet", distance 3. 
 }
 \section{Methods}{
   \describe{
