@@ -1,6 +1,7 @@
 \name{cghExSet-class}
 \docType{class}
 \alias{cghExSet-class}
+\alias{[,cghExSet-method}
 \alias{cloneMeta,cghExSet-method}
 \alias{cloneNames,cghExSet-method}
 \alias{exprs,cghExSet-method}
@@ -66,6 +67,8 @@ of clone IDs for CGH component }
     \item{initialize}{\code{signature(.Object = "cghExSet")}: infrastructure }
     \item{logRatios}{\code{signature(cghSet = "cghExSet")}: extract CGH assay results }
     \item{show}{\code{signature(object = "cghExSet")}: display object in concise form }
+    \item{"["}{\code{signature(object = "cghExSet")}: when first index is set, subset
+expression features; when second, subset samples }
 	 }
 }
 \references{R. M. Neve Cancer Cell Dec 2006 }

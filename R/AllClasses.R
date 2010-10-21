@@ -75,3 +75,19 @@ setMethod("show", "cghExSet", function(object) {
   show(annotation(object))
     })
 
+setMethod("[", "cghExSet", function(x, i, j, ..., drop=FALSE ) {
+    if (missing(drop)) drop <- FALSE
+    if (missing(i) && missing(j)) return(callNextMethod())
+    if (!missing(j)) {
+      nass = assayDataNew("lockedEnvironment", logRatios= x@cghAssays$logRatios[,j,drop=drop])
+      x@cghAssays = nass
+      x@assayData = assayDataNew("lockedEnvironment", exprs=exprs(x)[,j])
+      x@phenoData = phenoData(x)[j,]
+      }
+    if (!missing(i)) {
+      warning("when using first subscript, subsetting expression features only")
+      x@assayData = assayDataNew("lockedEnvironment", exprs=exprs(x)[i,])
+    }
+   x
+})
+    
