@@ -1,6 +1,6 @@
 Package: Neve2006
 Title: expression and CGH data on breast cancer cell lines
-Version: 0.12.0
+Version: 0.13.0
 Author: M. Neve et al. in Gray Lab at LBL
 Description: Experimental organization of combined expression and CGH data
 Depends: R (>= 2.14.0), tools, methods, utils, Biobase (>= 1.14.0), hgu133a.db, annotate
